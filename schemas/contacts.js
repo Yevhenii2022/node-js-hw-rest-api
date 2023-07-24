@@ -4,6 +4,13 @@ const addContactSchema = Joi.object({
 	name: Joi.string().required(),
 	email: Joi.string().required(),
 	phone: Joi.string().required(),
+	favorite: Joi.boolean(),
+});
+
+const updateStatus = Joi.object({
+	favorite: Joi.boolean().required().messages({
+		'any.required': 'missing field "favorite"',
+	}),
 });
 
 const joiSchema = Joi.object({
@@ -19,18 +26,18 @@ const joiSchema = Joi.object({
 const schema = {
 	name: {
 		type: String,
-		// required: [true, 'Set "name" for contact'],
-		// unique: true,
+		required: [true, 'Set "name" for contact'],
+		unique: true,
 	},
 	email: {
 		type: String,
-		// required: [true, 'Set "email" for contact'],
-		// unique: true,
+		required: [true, 'Set "email" for contact'],
+		unique: true,
 	},
 	phone: {
 		type: String,
-		// required: [true, 'Set "phone" for contact'],
-		// unique: true,
+		required: [true, 'Set "phone" for contact'],
+		unique: true,
 	},
 	favorite: {
 		type: Boolean,
@@ -48,4 +55,5 @@ module.exports = {
 	addContactSchema,
 	joiSchema,
 	mongooseContactsSchema,
+	updateStatus,
 };
