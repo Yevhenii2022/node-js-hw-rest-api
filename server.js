@@ -1,11 +1,3 @@
-// const app = require('./app');
-
-// GSJ0T11BgPXmZ7w2
-
-// app.listen(3000, () => {
-// 	console.log('Server running. Use our API on port: 3000');
-// });
-
 const mongoose = require('mongoose');
 require('dotenv').config();
 require('colors');
