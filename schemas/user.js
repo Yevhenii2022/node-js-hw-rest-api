@@ -9,6 +9,11 @@ const registerJoiSchema = Joi.object({
 	password: Joi.string().min(6).required(),
 });
 
+const loginJoiSchema = Joi.object({
+	email: Joi.string().pattern(emailRegexp).required(),
+	password: Joi.string().min(6).required(),
+});
+
 // Mongoose schemas
 const schema = {
 	name: {
@@ -47,4 +52,5 @@ const mongooseUserSchema = [schema, settings];
 module.exports = {
 	mongooseUserSchema,
 	registerJoiSchema,
+	loginJoiSchema,
 };
