@@ -14,6 +14,12 @@ const loginJoiSchema = Joi.object({
 	password: Joi.string().min(6).required(),
 });
 
+const changeSubscriptionSchema = Joi.object({
+	subscription: Joi.string()
+		.valid(...subscriptionList)
+		.required(),
+});
+
 // Mongoose schemas
 const schema = {
 	name: {
@@ -53,4 +59,5 @@ module.exports = {
 	mongooseUserSchema,
 	registerJoiSchema,
 	loginJoiSchema,
+	changeSubscriptionSchema,
 };
