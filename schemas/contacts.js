@@ -1,3 +1,4 @@
+const { Schema } = require('mongoose');
 const Joi = require('joi');
 
 const addContactSchema = Joi.object({
@@ -42,6 +43,11 @@ const schema = {
 	favorite: {
 		type: Boolean,
 		default: false,
+	},
+	owner: {
+		type: Schema.Types.ObjectId,
+		ref: 'user',
+		required: true,
 	},
 };
 
