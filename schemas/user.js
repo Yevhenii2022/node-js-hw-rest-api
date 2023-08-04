@@ -47,6 +47,10 @@ const schema = {
 		type: String,
 		default: '',
 	},
+	avatarURL: {
+		type: String,
+		required: true,
+	},
 };
 
 const settings = {

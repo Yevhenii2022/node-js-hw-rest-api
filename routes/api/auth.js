@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { validateBody, authenticate } = require('../../middlewares');
+const { validateBody, authenticate, upload } = require('../../middlewares');
 
 const {
 	registerJoiSchema,
@@ -25,6 +25,13 @@ router.patch(
 	authenticate,
 	validateBody(changeSubscriptionSchema),
 	ctrl.changeSubscription,
+);
+
+router.patch(
+	'/users/avatars',
+	authenticate,
+	upload.single('avatar'), // очікуємо один файл в полі 'avatar'
+	ctrl.updateAvatar,
 );
 
 module.exports = router;
