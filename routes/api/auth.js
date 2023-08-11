@@ -8,11 +8,16 @@ const {
 	registerJoiSchema,
 	loginJoiSchema,
 	changeSubscriptionSchema,
+	emailJoiSchema,
 } = require('../../schemas/user');
 
 const ctrl = require('../../controllers/auth');
 
 router.post('/register', validateBody(registerJoiSchema), ctrl.register);
+
+router.get('/verify/:verificationToken', ctrl.verifyEmail);
+
+router.post('/verify', validateBody(emailJoiSchema), ctrl.resendVerifyEmail);
 
 router.post('/login', validateBody(loginJoiSchema), ctrl.login);
 

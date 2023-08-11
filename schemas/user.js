@@ -20,6 +20,10 @@ const changeSubscriptionSchema = Joi.object({
 		.required(),
 });
 
+const emailJoiSchema = Joi.object({
+	email: Joi.string().pattern(emailRegexp).required(),
+});
+
 // Mongoose schemas
 const schema = {
 	name: {
@@ -51,6 +55,14 @@ const schema = {
 		type: String,
 		required: true,
 	},
+	verify: {
+		type: Boolean,
+		default: false,
+	},
+	verificationToken: {
+		type: String,
+		default: '',
+	},
 };
 
 const settings = {
@@ -64,4 +76,5 @@ module.exports = {
 	registerJoiSchema,
 	loginJoiSchema,
 	changeSubscriptionSchema,
+	emailJoiSchema,
 };
